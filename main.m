@@ -9,6 +9,8 @@ clear
 clc
 close
 
+%%% this is a small trial
+
 addpath(genpath('./src/')); parameter_path; parameter_aluminum; parameter_pvc
 parameter_pressure_acoustics
 
