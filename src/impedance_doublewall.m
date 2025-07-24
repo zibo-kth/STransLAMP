@@ -1,12 +1,14 @@
 function z = impedance_doublewall(f, s, z1, z2, za)
+% Calculate impedance of double wall system
+% f - frequency array
+% s - stiffness parameter
+% z1, z2 - impedance functions for panels 1 and 2
+% za - acoustic impedance function
 
-parameter_pressure_acoustics
+% Ensure frequency array is column vector
+f = f(:);
 
-% za = @(theta) rho0*c0/cos(theta);
-% d = 40e-3; % distance of two wall
-% Stiffness = 5.6e5*(1+1i*0.0); % [N/m^2]
-% s = Stiffness/d; % s = c0^2*rho0/d;
-
+% Calculate double wall impedance using input frequency array
 z = @(theta) z1(theta) + z2(theta) + 1i.*2.*pi.*f./s.*(z1(theta) + za(theta)).*(z2(theta) + za(theta));
 
 end
